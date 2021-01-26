@@ -18,10 +18,23 @@ namespace BankaMusteriTakip
 
         public void MusteriSil(List<Musteri> musteriler, string tcKimlikNo)
         {
-            var result = musteriler.Where(x => x.TcKimlikNo == tcKimlikNo);
-            Console.WriteLine($" Müşteri TC: { result.FirstOrDefault().TcKimlikNo } \n Müşteri Ad: {result.FirstOrDefault().Ad} \n Müşteri Soyad: {result.FirstOrDefault().Soyad} \n Müşteri Cinsiyet: {result.FirstOrDefault().Cinsiyet} \n Müşteri Yas: {result.FirstOrDefault().Yas}");
-            musteriler.RemoveAll(x => x.TcKimlikNo == tcKimlikNo);
-            Console.WriteLine("-------------Silme İşlemi Başarılı!!!----------------");
+            var result = musteriler.FirstOrDefault(x=> x.TcKimlikNo == tcKimlikNo);
+
+            if (result != null)
+            {
+                Console.WriteLine($" Müşteri TC: { result.TcKimlikNo } \n Müşteri Ad: {result.Ad} \n Müşteri Soyad: {result.Soyad} \n Müşteri Cinsiyet: {result.Cinsiyet} \n Müşteri Yas: {result.Yas}");
+                musteriler.Remove(result);
+                Console.WriteLine("-------------Silme İşlemi Başarılı!!!----------------");
+            }
+            else
+            {
+                Console.WriteLine("Silmek İstediğiniz Kayıt Bulunamadı!!!");
+            }
+
+            //var result = musteriler.Where(x => x.TcKimlikNo == tcKimlikNo);
+            //Console.WriteLine($" Müşteri TC: { result.FirstOrDefault().TcKimlikNo } \n Müşteri Ad: {result.FirstOrDefault().Ad} \n Müşteri Soyad: {result.FirstOrDefault().Soyad} \n Müşteri Cinsiyet: {result.FirstOrDefault().Cinsiyet} \n Müşteri Yas: {result.FirstOrDefault().Yas}");
+            //musteriler.RemoveAll(x => x.TcKimlikNo == tcKimlikNo);
+            //Console.WriteLine("-------------Silme İşlemi Başarılı!!!----------------");
         }
 
 
